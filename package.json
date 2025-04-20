@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.23.1",
-    "@react-navigation/native": "^7.1.6",
-    "@react-navigation/stack": "^7.2.10",
+    "@react-navigation/native": "6.x",
+    "@react-navigation/stack": "6.x",
     "expo": "~52.0.46",
     "expo-status-bar": "~2.0.1",
     "firebase": "^11.6.0",
