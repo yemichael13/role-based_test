@@ -1,46 +1,26 @@
-// screens/parent/ParentHome.js
-import React, { useState } from 'react';
-import { View, Button, FlatList, Text } from 'react-native';
+import React from 'react';
+import { View, Button, Text } from 'react-native';
 import { useAuth } from '../../context/AuthContext';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../../services/firebase';
 
 export default function ParentHome({ navigation }) {
   const { user, logout } = useAuth();
-  const [children, setChildren] = useState([]);
 
-  const addChild = async (childName) => {
-    try {
-      const docRef = await addDoc(collection(db, 'children'), {
-        parentId: user.uid,
-        name: childName,
-        progress: { math: 0, literacy: 0 }
-      });
-      setChildren([...children, { id: docRef.id, name: childName }]);
-    } catch (error) {
-      console.error('Error adding child: ', error);
-    }
-  };
+  // Assume there's only one child, so we directly access it
+  const child = { id: 'child1', name: 'Your Child' };
 
   return (
     <View style={{ flex: 1, padding: 20 }}>
+      <View style={styles.childItem}>
+        <Text>{child.name}</Text>
+        <Button
+          title="Go to Child Dashboard"
+          onPress={() => navigation.navigate('ChildDashboard', { childId: child.id })}
+        />
+      </View>
+
       <Button
-        title="Add Child"
-        onPress={() => navigation.navigate('AddChild')}
-      />
-      
-      <FlatList
-        data={children}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.childItem}>
-            <Text>{item.name}</Text>
-            <Button
-              title="View Progress"
-              onPress={() => navigation.navigate('ChildDashboard', { childId: item.id })}
-            />
-          </View>
-        )}
+        title="Go to Parent Dashboard"
+        onPress={() => navigation.navigate('ParentDashboard')}
       />
 
       <Button title="Log Out" onPress={logout} />
@@ -52,6 +32,6 @@ const styles = {
   childItem: {
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc'
-  }
+    borderBottomColor: '#ccc',
+  },
 };

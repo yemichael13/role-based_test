@@ -27,7 +27,11 @@ export default function LoginScreen({ navigation }) {
     try {
       setLoading(true);
       await login(email, password);
+      // → on success you'll just proceed (e.g. via your onAuthStateChanged listener)
     } catch (error) {
+      // ← LOG raw error so you can inspect error.code and error.message
+      console.log('[LoginScreen] login error:', error, 'code:', error.code, 'message:', error.message);
+
       Alert.alert('Login Failed', error.message);
     } finally {
       setLoading(false);

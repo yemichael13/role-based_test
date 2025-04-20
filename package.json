@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.23.1",
+    "@react-native-firebase/app": "^21.14.0",
+    "@react-native-firebase/auth": "^21.14.0",
+    "@react-native-firebase/firestore": "^21.14.0",
+    "@react-native-picker/picker": "2.9.0",
     "@react-navigation/native": "6.x",
     "@react-navigation/stack": "6.x",
     "expo": "~52.0.46",
@@ -20,8 +24,7 @@
     "react-native": "0.76.9",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-reanimated": "~3.16.1",
-    "react-native-screens": "~4.4.0",
-    "@react-native-picker/picker": "2.9.0"
+    "react-native-screens": "~4.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2"
